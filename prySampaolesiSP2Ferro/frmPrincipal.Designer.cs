@@ -30,37 +30,40 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             txtKilometros = new MaskedTextBox();
-            numericUpDown1 = new NumericUpDown();
+            txtDias = new NumericUpDown();
             lblDistancia = new Label();
             lblDias = new Label();
             btnCalcular = new Button();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtDias).BeginInit();
             SuspendLayout();
             // 
             // txtKilometros
             // 
             txtKilometros.Location = new Point(57, 58);
-            txtKilometros.Mask = "00000km";
+            txtKilometros.Mask = "000000000";
             txtKilometros.Name = "txtKilometros";
             txtKilometros.Size = new Size(219, 27);
             txtKilometros.TabIndex = 0;
             txtKilometros.ValidatingType = typeof(int);
             // 
-            // numericUpDown1
+            // txtDias
             // 
-            numericUpDown1.Location = new Point(57, 129);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(219, 27);
-            numericUpDown1.TabIndex = 1;
+            txtDias.Location = new Point(57, 129);
+            txtDias.Maximum = new decimal(new int[] { 30, 0, 0, 0 });
+            txtDias.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            txtDias.Name = "txtDias";
+            txtDias.Size = new Size(219, 27);
+            txtDias.TabIndex = 1;
+            txtDias.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // lblDistancia
             // 
             lblDistancia.AutoSize = true;
-            lblDistancia.Location = new Point(33, 35);
+            lblDistancia.Location = new Point(12, 35);
             lblDistancia.Name = "lblDistancia";
-            lblDistancia.Size = new Size(265, 20);
+            lblDistancia.Size = new Size(297, 20);
             lblDistancia.TabIndex = 2;
-            lblDistancia.Text = "Distancia hasta la localidad de destino";
+            lblDistancia.Text = "Distancia hasta la localidad de destino(Km)";
             // 
             // lblDias
             // 
@@ -79,6 +82,7 @@
             btnCalcular.TabIndex = 4;
             btnCalcular.Text = "Calcular";
             btnCalcular.UseVisualStyleBackColor = true;
+            btnCalcular.Click += btnCalcular_Click;
             // 
             // frmPrincipal
             // 
@@ -88,12 +92,13 @@
             Controls.Add(btnCalcular);
             Controls.Add(lblDias);
             Controls.Add(lblDistancia);
-            Controls.Add(numericUpDown1);
+            Controls.Add(txtDias);
             Controls.Add(txtKilometros);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Calculadora de precio del boleto";
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtDias).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -101,7 +106,7 @@
         #endregion
 
         private MaskedTextBox txtKilometros;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown txtDias;
         private Label lblDistancia;
         private Label lblDias;
         private Button btnCalcular;
